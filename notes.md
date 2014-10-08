@@ -4,7 +4,11 @@ require 'chef'
 require 'chef/knife'
 
 Chef::Knife.load_commands
-commands = Chef::Knife.list_commands
+list_of_commands = Chef::Knife.list_commands
+
+cookbook_list_options = Chef::Knife.subcommands["cookbook_list"].options
+
+
 ```
 
 # Possible GUI frameworks
