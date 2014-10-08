@@ -12,25 +12,31 @@ Chef::Knife.list_commands.map {|i| list_of_commands << i[0]}
 subcommands_by_category = Chef::Knife.subcommands_by_category
 subcommands = Chef::Knife.subcommands
 
-Shoes.app height: 150, width: 250 do
+Shoes.app height: 600, width: 800 do
   background rgb(200, 200, 200)
-  stack margin: 10 do
-    para "Choose a command:"
-    list_box items: list_of_commands, choose: list_of_commands[0] do |list|
-      s = subcommands_by_category["#{list.text}"]
-      @a.clear do
-        list_box items: s, choose: s[0] do |subcommand|
+  
+    stack width: 10000 do
+      para "Choose a command:"
+      
+      flow do
+      list_box items: list_of_commands, choose: list_of_commands[0] do |list|
+        @a.items = subcommands_by_category["#{list.text}"] 
+      end
+
+      @a = list_box do |subcommand|
           @b.clear do
-            subcommands["cs_server_create"].options.each do |i,j|
-              para "#{j[:description]}"
-              edit_line
+            subcommands["#{subcommand.text}"].options.each do |i,j|
+                para "#{j[:description]}"
+                edit_line
             end
-          end
         end
       end
+      edit_line
     end
-    @a = stack margin: 10
-    @b = stack margin: 10
+
+
+      @b = stack margin: 10
+
     button "Go!"
   end
 
