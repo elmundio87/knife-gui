@@ -18,6 +18,8 @@ commands = Chef::Knife.list_commands
 - Provide a UI with labelled [text|check]boxes taken from the plugin usage guide
 - Native windows look and feel
 - Provide a way to save+load plugin configurations (xml/yml/??)
-
+- Will be packaged as a gem
+- Install new plugins from the GUI
+- Be able to update gems (ie. run bundle install && bundle update)
 
 
