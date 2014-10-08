@@ -21,3 +21,4 @@ commands = Chef::Knife.list_commands
 
 
 
+cookbook_list_options.map {|i,j| j[:description]}.join("\n")
